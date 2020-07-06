@@ -2,11 +2,7 @@ app_root: .
 ignored_folders:
   - vendor
   - log
-  - logs
   - tmp
-  - node_modules
-  - bin
-  - templates
 included_extensions:
   - .go
 build_target_path: ""
