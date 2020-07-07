@@ -11,6 +11,7 @@ jobs:
     env:
       SSH_KEY: ${{ secrets.SSHKEY }}
       SSH_KEY_PUB: ${{ secrets.SSHKEYPUB }}
+      PORT: ${{ secrets.PORT }}
       SSH_PORT: ${{ secrets.SSHPORT }}
       SSH_USERNAME: ${{ secrets.SSH_USERNAME }}
       GIT_REPOSITORY: https://github.com/dionomusuko/go-docker-template
@@ -26,6 +27,5 @@ jobs:
       - name: Deploy api server
         working-directory: ~/gce
         run: |
-          ssh-add ~/.ssh/my-ssh-key
-          ssh ${SSH_USERNAME}@${SSH_PORT} -i ~/.ssh/my-ssh-key 'bash -s' < deploy.sh ${GIT_REPOSITORY}
+          ssh -p ${PORT} ${SSH_PORT} -i ~/.ssh/my-ssh-key 'bash -s' < deploy.sh ${GIT_REPOSITORY}
 
