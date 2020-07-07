@@ -27,5 +27,4 @@ jobs:
       - name: Deploy api server
         working-directory: ~/gce
         run: |
-          ssh -oStrictHostKeyChecking=no -p ${PORT} ${SSH_PORT} -i ~/.ssh/my-ssh-key 'bash -s' < deploy.sh ~/gce
-
+          ssh -oStrictHostKeyChecking=no -p ${PORT} ${SSH_PORT} -i ~/.ssh/my-ssh-key
