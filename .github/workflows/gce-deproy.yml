@@ -1,0 +1,14 @@
+name: Deploy docker-compose to GCE
+
+on:
+  push:
+    branches: [ master ]
+
+jobs:
+  deploy-gce:
+    name: deploy docker-compose to gce
+    runs-on: ubuntu-latest
+    env:
+      SSH_KEY: ${{ secrets.SSHKEY }}
+      SSH_KEY_PUB: ${{ secrets.SSHKEYPUB }}
+      SSH_PORT: ${{ secrets.SSHPORT }}
