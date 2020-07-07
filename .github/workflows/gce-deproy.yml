@@ -26,7 +26,6 @@ jobs:
       - name: Deploy api server
         working-directory: ~/gce
         run: |
-#          eval "$(ssh-agent -s)"
           ssh-add ~/.ssh/my-ssh-key
           ssh ${SSH_USERNAME}@${SSH_PORT} -i ~/.ssh/my-ssh-key 'bash -s' < deploy.sh ${GIT_REPOSITORY}
 
