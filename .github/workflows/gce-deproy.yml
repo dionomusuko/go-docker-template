@@ -26,4 +26,4 @@ jobs:
           chmod 600 ~/.ssh/my-ssh-key
       - name: Deploy api serverg
         run: |
-          ssh -oStrictHostKeyChecking=no -p ${PORT} ${SSH_USERNAME}@${SSH_PORT} -i ~/.ssh/my-ssh-key 'bash -s' < deploy.sh ${GIT_REPOSITORY}
+          ssh -oStrictHostKeyChecking=no -p ${PORT} ${SSH_USERNAME}@${SSH_PORT} -i ~/.ssh/my-ssh-key
