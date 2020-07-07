@@ -20,11 +20,13 @@ jobs:
         uses: actions/checkout@v2
       - name: Setup SSH
         run: |
-          mkdir -p ~/.ssh
+          mkdir ~/.ssh
           echo ${SSH_KEY} | base64 -d > ~/.ssh/my-ssh-key
           echo ${SSH_KEY_PUB} | base64 -d > ~/.ssh/my-ssh-key.pub
           chmod 600 ~/.ssh/my-ssh-key
       - name: Deploy api server
         working-directory: ~/gce
         run: |
+          eval "$(ssh-agent -s)"
+          ssh-add ~/.ssh/my-ssh-key
           ssh -oStrictHostKeyChecking=no -p ${PORT} ${SSH_PORT} -i ~/.ssh/my-ssh-key
