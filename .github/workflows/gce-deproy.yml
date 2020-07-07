@@ -12,3 +12,21 @@ jobs:
       SSH_KEY: ${{ secrets.SSHKEY }}
       SSH_KEY_PUB: ${{ secrets.SSHKEYPUB }}
       SSH_PORT: ${{ secrets.SSHPORT }}
+      SSH_USERNAME: ${{ secrets.SSH_USERNAME }}
+      GIT_REPOSITORY: https://github.com/dionomusuko/go-docker-template
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v2
+      - name: Setup SSH
+        run: |
+          mkdir -p ~/.ssh
+          echo ${SSH_KEY} | base64 -d > ~/.ssh/my-ssh-key
+          echo ${SSH_KEY_PUB} | base64 -d > ~/.ssh/my-ssh-key.pub
+          chmod 600 ~/.ssh/my-ssh-key
+      - name: Deploy api server
+        working-directory: ~/gce
+        run: |
+          eval "$(ssh-agent -s)"
+          ssh-add ~/.ssh/my-ssh-key
+          ssh ${SSH_USERNAME}@${SSH_PORT} -i ~/.ssh/my-ssh-key 'bash -s' < deploy.sh ${GIT_REPOSITORY}
+
