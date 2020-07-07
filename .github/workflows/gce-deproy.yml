@@ -27,5 +27,5 @@ jobs:
       - name: Deploy api server
         working-directory: ~/gce
         run: |
-          ssh -p ${PORT} ${SSH_PORT} -i ~/.ssh/my-ssh-key 'bash -s' < deploy.sh ${GIT_REPOSITORY}
+          ssh -oStrictHostKeyChecking=no -p ${PORT} ${SSH_PORT} -i ~/.ssh/my-ssh-key 'bash -s' < deploy.sh ~/gce
 
