@@ -1,11 +1,10 @@
 #!/bin/bash
 
 # 初回のみClone、以降はPullする
-if cd app; then
-  git pull;
+if cd .github; then
+  git pull origin master;
 else
-  git clone $1 app;
-  cd app
+  git clone https://github.com/dionomusuko/go-docker-template.git;
 fi
 
 # Makefileを実行
