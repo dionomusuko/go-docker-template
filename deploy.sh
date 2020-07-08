@@ -1,4 +1,4 @@
 #!/bin/bash
 
 # Makefileを実行
-make run
+docker-compose up
