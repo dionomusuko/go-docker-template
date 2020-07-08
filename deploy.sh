@@ -1,4 +1,4 @@
 #!/bin/bash
 
-# Makefileを実行
+# Makefileを実行できなそうなので
 docker-compose up
