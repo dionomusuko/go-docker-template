@@ -1,4 +1,4 @@
 #!/bin/bash
 
-# Makefileを実行できなそうなので
+# Makefileを実行できなそうなのでga
 docker-compose up
